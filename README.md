@@ -1,5 +1,8 @@
 # localhost
 
+[![npm version](https://img.shields.io/npm/v/localhost-cockpit.svg)](https://www.npmjs.com/package/localhost-cockpit)
+[![license](https://img.shields.io/npm/l/localhost-cockpit.svg)](./LICENSE)
+
 `localhost` is a dependency-free terminal cockpit for the development servers
 running on your computer. It is designed for both humans and AI coding agents.
 
@@ -9,22 +12,24 @@ storefront    http://localhost:3000  Next.js  48102  checkout-redesign
 api           http://localhost:8000  FastAPI  48177  main
 ```
 
-## Try it
+## Quick start
 
 Requires Node.js 20+ and `lsof` (included with macOS and commonly available on
 Linux).
 
+Run it without installing:
+
 ```bash
-npm link
+npx localhost-cockpit
+```
+
+Or install the command globally:
+
+```bash
+npm install --global localhost-cockpit
 localhost
 localhost inspect 3000
 localhost watch
-```
-
-No global installation is needed while developing:
-
-```bash
-node ./bin/localhost.js list
 ```
 
 ## Commands
@@ -50,18 +55,22 @@ discovery itself.
 
 ## MCP integration
 
-Add the server to an MCP-capable coding agent using a stdio configuration:
+Add the server to an MCP-capable coding agent using a stdio configuration. This
+version needs no global installation:
 
 ```json
 {
   "mcpServers": {
     "localhost": {
-      "command": "node",
-      "args": ["/absolute/path/to/localhost/bin/localhost.js", "mcp"]
+      "command": "npx",
+      "args": ["--yes", "localhost-cockpit", "mcp"]
     }
   }
 }
 ```
+
+If the package is installed globally, use `"command": "localhost"` and
+`"args": ["mcp"]` instead.
 
 Tools exposed:
 
@@ -85,6 +94,9 @@ planned next.
 ## Development
 
 ```bash
+npm install
+npm link
+localhost
 npm test
 npm run check
 ```
