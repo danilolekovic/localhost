@@ -1,0 +1,24 @@
+{
+  "name": "localhost-cockpit",
+  "version": "0.1.0",
+  "description": "See and control every development server running on your machine.",
+  "type": "module",
+  "bin": {
+    "localhost": "./bin/localhost.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node ./bin/localhost.js",
+    "test": "node --test",
+    "check": "node --check ./bin/localhost.js && node --check ./src/discovery.js && node --check ./src/mcp.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
